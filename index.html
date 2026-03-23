@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubo 3D Grande</title>
+    <style>
+        /* Centraliza o cubo na tela */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1a1a1a;
+            perspective: 1000px; /* Dá profundidade ao 3D */
+            overflow: hidden;
+        }
+
+        /* Container principal */
+        .cubo-grande {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            transform-style: preserve-3d;
+            
+            /* Ângulo padrão inicial (inclinado para parecer 3D parado) */
+            transform: rotateX(-20deg) rotateY(-20deg); 
+            
+            /* Suaviza o movimento do mouse (1 segundo para girar) */
+            transition: transform 1s ease-out; 
+        }
+
+        /* QUANDO PASSA O MOUSE: Gira um pouco */
+        .cubo-grande:hover {
+            transform: rotateX(20deg) rotateY(40deg);
+        }
+
+        /* Estrutura de cada cubinho pequeno */
+        .cubinho {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            transform-style: preserve-3d;
+        }
+
+        /* Estilo das faces dos cubinhos */
+        .face {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9); /* Branco com leve transparência */
+            border: 2px solid #333; /* Linhas separadoras */
+            box-sizing: border-box;
+        }
+
+        /* Posicionamento 3D das faces de cada cubinho */
+        .face.frente  { transform: translateZ(25px); }
+        .face.tras    { transform: rotateY(180deg) translateZ(25px); }
+        .face.esquerda{ transform: rotateY(-90deg) translateZ(25px); }
+        .face.direita { transform: rotateY(90deg) translateZ(25px); }
+        .face.topo    { transform: rotateX(90deg) translateZ(25px); }
+        .face.base    { transform: rotateX(-90deg) translateZ(25px); }
+
+        /* Posicionamento de cada cubinho no Cubo Grande (Eixos X, Y, Z) */
+        /* Camada da Frente (Z = 60px) */
+        .c1  { transform: translate3d(0px, 0px, 60px); }
+        .c2  { transform: translate3d(60px, 0px, 60px); }
+        .c3  { transform: translate3d(120px, 0px, 60px); }
+        .c4  { transform: translate3d(0px, 60px, 60px); }
+        .c5  { transform: translate3d(60px, 60px, 60px); }
+        .c6  { transform: translate3d(120px, 60px, 60px); }
+        .c7  { transform: translate3d(0px, 120px, 60px); }
+        .c8  { transform: translate3d(60px, 120px, 60px); }
+        .c9  { transform: translate3d(120px, 120px, 60px); }
+
+        /* Camada do Meio (Z = 0px) */
+        .c10 { transform: translate3d(0px, 0px, 0px); }
+        .c11 { transform: translate3d(60px, 0px, 0px); }
+        .c12 { transform: translate3d(120px, 0px, 0px); }
+        .c13 { transform: translate3d(0px, 60px, 0px); }
+        .c14 { transform: translate3d(60px, 60px, 0px); }
+        .c15 { transform: translate3d(120px, 60px, 0px); }
+        .c16 { transform: translate3d(0px, 120px, 0px); }
+         .c17{ transform: translate3d(60px, 120px, 0px); }
+        .c18 { transform: translate3d(120px, 120px, 0px); }
+
+        /* Camada de Trás (Z = -60px) */
+        .c19 { transform: translate3d(0px, 0px, -60px); }
+        .c20 { transform: translate3d(60px, 0px, -60px); }
+        .c21 { transform: translate3d(120px, 0px, -60px); }
+        .c22 { transform: translate3d(0px, 60px, -60px); }
+        .c23 { transform: translate3d(60px, 60px, -60px); }
+        .c24 { transform: translate3d(120px, 60px, -60px); }
+        .c25 { transform: translate3d(0px, 120px, -60px); }
+        .c26 { transform: translate3d(60px, 120px, -60px); }
+        .c27 { transform: translate3d(120px, 120px, -60px); }
+    </style>
+</head>
+<body>
+
+    <div class="cubo-grande">
+        <div class="cubinho c1"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c2"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c3"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c4"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c5"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c6"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c7"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c8"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c9"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+
+        <div class="cubinho c10"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c11"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c12"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c13"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c14"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c15"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c16"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c17"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c18"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+
+        <div class="cubinho c19"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c20"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c21"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c22"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c23"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c24"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c25"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c26"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+        <div class="cubinho c27"><div class="face frente"></div><div class="face tras"></div><div class="face esquerda"></div><div class="face direita"></div><div class="face topo"></div><div class="face base"></div></div>
+    </div>
+
+</body>
+</html>
